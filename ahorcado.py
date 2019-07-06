@@ -101,6 +101,14 @@ def display_board(hidden_word, tries):
     print('--- * --- * --- * --- * --- * --- ')
 
 
+#This function clears the prompt.
+def clearPrompt():
+    if os.name == "posix":
+        os.system ("clear")
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        os.system ("cls")
+
+
 #Main function. Drives the game logic.
 def run():
     word = random_word()
@@ -108,6 +116,8 @@ def run():
     tries = 0
 
     while True:
+        clearPrompt()
+        welcome()
         display_board(hidden_word, tries)
         current_letter = str(input('Escoge una letra: '))
 
@@ -142,15 +152,8 @@ def run():
             break
 
 
-def clearPrompt():
-    """This function clears the prompt"""
-    if os.name == "posix":
-        os.system ("clear")
-    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-        os.system ("cls")
 
 
 if __name__ == '__main__':
     """Main game function."""
-    welcome()
     run()
